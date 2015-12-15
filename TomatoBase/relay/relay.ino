@@ -40,11 +40,13 @@ void setup(){
 void loop(){
   char i;
 
+  if(Serial.available()){
   i = Serial.read();
   switch(i){
   case 0: Stop(); break;
   case 1: LowPower(); break;
   case 2: Turbo(); break;
+  }
   }
 
 }
