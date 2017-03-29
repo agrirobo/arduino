@@ -1,12 +1,12 @@
-#define STOP_PIN 3
-#define LOW_PIN 9
+#define STOP_PIN  3
+#define LOW_PIN   9
 #define TURBO_PIN 10
 
-int LowPower();
-int Turbo();
-void Stop();
+void lowPower();
+void turbo();
+void stop();
 
-void switch_do(int);
+void switchDo(int);
 
 void setup()
 {
@@ -24,29 +24,29 @@ void loop()
     char ch = Serial.read();
     switch (ch)
     {
-    case 0: Stop(); break;
-    case 1: LowPower(); break;
-    case 2: Turbo(); break;
+    case 0: stop(); break;
+    case 1: lowPower(); break;
+    case 2: turbo(); break;
     }
   }
 }
 
-int LowPower()
+void lowPower()
 {
-  switch_do(LOW_PIN);
+  switchDo(LOW_PIN);
 }
 
-int Turbo()
+void turbo()
 {
-  switch_do(TURBO_PIN);
+  switchDo(TURBO_PIN);
 }
 
-void Stop()
+void stop()
 {
-  switch_do(STOP_PIN);
+  switchDo(STOP_PIN);
 }
 
-void switch_do(int pin_num)
+void switchDo(int pin_num)
 {
   const int step = 200;
   digitalWrite(pin_num, HIGH);
